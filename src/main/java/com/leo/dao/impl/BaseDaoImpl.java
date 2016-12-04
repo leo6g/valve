@@ -2,11 +2,9 @@ package com.leo.dao.impl;
 
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.session.SqlSession;
-
 import com.leo.dao.IBaseDao;
-
+import com.leo.util.ConvertUtil;
 public class BaseDaoImpl implements IBaseDao {
 	private SqlSession sqlSession;
 	
@@ -120,7 +118,6 @@ public class BaseDaoImpl implements IBaseDao {
 		List<Map<String, String>> beans = ConvertUtil.convertSqlMap2JavaMap(list);
 		return beans;
 	}
-
 	/**
 	 * 修改数据
 	 * 
