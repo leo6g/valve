@@ -9,7 +9,6 @@
 				<value>classpath:config/jdbc.properties</value>
 			</list>
 		</property>
-		
 	</bean> 
 
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">  
