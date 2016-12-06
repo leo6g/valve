@@ -63,6 +63,12 @@
 		</plugins>
 	</build>
   <dependencies>
+  		<!-- log -->
+  		<dependency>
+  			 <groupId>org.slf4j</groupId>
+ 			 <artifactId>slf4j-api</artifactId>
+ 			 <version>1.6.4</version>
+  		</dependency>
   		<!--servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -153,6 +159,12 @@
 			<groupId>org.apache.commons</groupId>
   			<artifactId>commons-lang3</artifactId>
  			<version>3.4</version>
+		</dependency>
+		<!-- commons -->
+		<dependency>
+			<groupId>com.ai</groupId>
+			<artifactId>control</artifactId>
+			<version>2.5</version>
 		</dependency>
   </dependencies>
 </project>
