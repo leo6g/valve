@@ -162,6 +162,11 @@
 		</dependency>
 		<!-- commons -->
 		<dependency>
+			<groupId>com.lfc</groupId>
+			<artifactId>lfc-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 			<groupId>com.ai</groupId>
 			<artifactId>control</artifactId>
 			<version>2.5</version>

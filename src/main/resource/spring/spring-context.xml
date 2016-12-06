@@ -15,6 +15,6 @@
 	<bean id="controlService" class="com.lfc.wxadminweb.common.control.impl.ControlServiceImpl">
 		<property name="coreControlService" ref="coreControlService" />
 	</bean>
-
+	<util:properties id="system" location="classpath:config/system.properties"></util:properties>
 
 </beans>

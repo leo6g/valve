@@ -42,19 +42,7 @@
 
 	<!-- 配置映射文件 -->
 	<mappers>
-		<mapper resource="mappings/commonOracleMap.xml" />
-		<!-- 用户管理 -->
-		<mapper resource="mappings/usermanage/userManageMapper.xml" />
-		<!-- 菜单管理 -->
-		<mapper resource="mappings/menu/TSMenuMapper.xml" />
-		<!-- 按钮管理 -->
-		<mapper resource="mappings/button/TSButtonOperMapper.xml" />
-		<!-- 角色管理 -->
-		<mapper resource="mappings/role/TSRoleMapper.xml" />
-		<!-- 组织机构管理 -->
-		<mapper resource="mappings/depart/DepartMapper.xml" />
-		<!-- 机构级别管理 -->
-		<mapper resource="mappings/deplevel/DepartLevelMapper.xml" />
+		
 	</mappers>
 
 </configuration>

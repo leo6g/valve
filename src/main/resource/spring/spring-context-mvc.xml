@@ -12,7 +12,7 @@
 	<context:annotation-config />
 	<!-- 使用Annotation自动注册Bean,只扫描@Controller -->
 	<context:component-scan
-		base-package="com.lfc.wxadminweb.common.web.*,com.lfc.wxadminweb.modules.*"
+		base-package="com.leo.*"
 		use-default-filters="false"><!-- base-package 如果多个，用“,”分隔 -->
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
@@ -140,9 +140,11 @@
 			</list>
 		</property>
 	</bean>
+	
+	
 	<!-- <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> 
 		<property name="exceptionMappings"> <props> <prop key="java.lang.Throwable">error/500</prop> 
 		</props> </property> </bean> -->
 	<!-- 异常处理类 -->
-	<bean id="exceptionHandler" class="com.lfc.wxadminweb.common.exception.MyExceptionResolver" />
+	<!-- <bean id="exceptionHandler" class="com.lfc.wxadminweb.common.exception.MyExceptionResolver" /> -->
 </beans>
