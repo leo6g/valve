@@ -7,9 +7,16 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class TestController extends BaseContoller {
 	
+	@RequestMapping(value="0首工位")
+	public ModelAndView station0(ModelAndView mv){
+		mv.setViewName("0首工位");
+		return mv;
+	}
+	
 	@RequestMapping(value="login")
-	public ModelAndView test(ModelAndView mv){
-		mv.setViewName("login");
+	public ModelAndView login(ModelAndView mv){
+		mv.setViewName("登陆界面");
+		mv.addObject("username", "heeee");
 		return mv;
 	}
 	

@@ -3,7 +3,6 @@
   <groupId>com.leo</groupId>
   <artifactId>valve_datection</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring-framework.version>4.1.6.RELEASE</spring-framework.version>
@@ -187,4 +186,5 @@
 			<version>2.5</version>
 		</dependency>
   </dependencies>
+  <packaging>war</packaging>
 </project>
