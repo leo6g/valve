@@ -51,7 +51,7 @@
 				<artifactId>maven-jetty-plugin</artifactId>
 				<version>6.0.0</version>
 				<configuration>
-					<contextPath>/wxadminweb</contextPath>
+					<contextPath>/valve</contextPath>
 					<scanIntervalSeconds>300</scanIntervalSeconds>
 					<connectors>
 						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
@@ -63,6 +63,11 @@
 		</plugins>
 	</build>
   <dependencies>
+		 <dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.14</version>
+		</dependency>
   		<!-- log -->
   		<dependency>
   			 <groupId>org.slf4j</groupId>
@@ -154,6 +159,16 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.2</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>${velocity.version}</version>
+		</dependency>
 		<!-- apache -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -161,6 +176,11 @@
  			<version>3.4</version>
 		</dependency>
 		<!-- commons -->
+		<dependency>
+			<groupId>com.lfc</groupId>
+			<artifactId>lfc-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>com.ai</groupId>
 			<artifactId>control</artifactId>

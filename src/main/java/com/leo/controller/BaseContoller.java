@@ -16,6 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.ai.frame.bean.InputObject;
 import com.ai.frame.bean.OutputObject;
+import com.lfc.core.util.JsonUtil;
 
 public class BaseContoller {
 	@Autowired
@@ -35,18 +36,21 @@ public class BaseContoller {
 		if(StringUtils.isNotEmpty(method)&&StringUtils.isNotEmpty(service)){
 			execute(inputObj);
 		}else{
-			logger.info("方法名或服务名不能为空");
+			logger.info("SERVICE NAME OR METHOD NAME IS NULL!!!");
 		}
 		return null;
 	}
 	private void execute(InputObject inputObj){
+		long start = System.currentTimeMillis();
 		OutputObject outputObj = null;
 		String service = inputObj.getService();
 		String method = inputObj.getMethod();
 		try {
+			logger.info("INVOKE SECCESS!", "service=" + inputObj.getService() + "| method=" + inputObj.getMethod()+"|input="+JsonUtil.convertObject2Json(inputObj)+"|COST="+(System.currentTimeMillis() - start)+"ms");
 			Object obj = beanFactory.getBean(service);
 			Method mth = obj.getClass().getMethod(method, InputObject.class,OutputObject.class);
 			mth.invoke(obj, inputObj,outputObj);
+			logger.info("INVOKE SECCESS!", "service=" + inputObj.getService() + "| method=" + inputObj.getMethod()+"|output="+JsonUtil.convertObject2Json(outputObj)+"|COST="+(System.currentTimeMillis() - start)+"ms");
 		} catch (Exception e) {
 			logger.info("execute INVOKE ERROR！");
 		}
