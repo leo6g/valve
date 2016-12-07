@@ -5,12 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "test")
 public class TestController extends BaseContoller {
 	
-	@RequestMapping(value="test")
+	@RequestMapping(value="login")
 	public ModelAndView test(ModelAndView mv){
-		mv.setViewName("test");
+		mv.setViewName("login");
 		return mv;
 	}
 	
