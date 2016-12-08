@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="SYSUserMapper" >
+  <resultMap id="BaseResultMap" type="java.util.Map" >
+  	<id column="station" property="station" jdbcType="VARCHAR"/>
+  	<result column="name" property="name" jdbcType="VARCHAR"/>
+	<result column="password" property="password" jdbcType="VARCHAR"/>
+	
+  </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <trim prefix="where" prefixOverrides="and|or" >
+      <if test="name != null" >
+		 AND name = #{name}
+	 </if>
+	<if test="password != null" >
+		 AND password = #{password}
+	 </if>
+	<if test="station != null" >
+		 AND station = #{station}
+	 </if>
+	     
+    </trim>
+  </sql>
+  
+  <sql id="Base_Column_List" >
+  	name,password,station
+  </sql>
+  
+  <!-- 分页查询系统用户 -->
+  
+  <select id="getList" resultMap="BaseResultMap" >
+  	<include refid="common.Oracle_Pagination_Head" />
+	    select 
+	    <include refid="Base_Column_List" />
+	    from VALVE_USER
+	<if test="_parameter != null" >
+     	<include refid="Example_Where_Clause" />
+   	</if>
+    <if test="orderByClause != null" >
+     	order by ${orderByClause}
+    </if>
+    <include refid="common.Oracle_Pagination_Tail" />
+  </select>
+  
+  <!-- 根据Id查询系统用户 -->
+  
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from VALVE_USER
+    where station = #{station,jdbcType=VARCHAR}
+  </select>
+  
+    <select id="checkUser" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select conunt(1)
+    from VALVE_USER
+    <include refid="Example_Where_Clause" />
+  </select>
+  
+  <!-- 查询系统用户总数量 -->
+  
+  <select id="countAll" resultType="java.lang.Integer" >
+	    select count(1)
+	    from VALVE_USER
+	    <!-- 有DELETE_FLAG放开-->
+	   <!-- where DELETE_FLAG = 0 -->
+  </select>
+  
+  <!-- 查询所有系统用户 -->
+  
+  <select id="getAll" resultMap="BaseResultMap">
+    select 
+     <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from VALVE_USER 
+   <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <!-- 根据系统用户编码,查询系统用户信息 有code验证时放开-->
+   <!-- <select id="getByCode" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from VALVE_USER
+    where  = #{,jdbcType=}
+    AND DELETE_FLAG = 0 
+    <if test="station != null" >
+    	and station != #{station,jdbcType=VARCHAR}
+    </if>
+  </select> -->
+  
+  <!-- 增加系统用户 -->
+  
+  <insert id="insert" parameterType="java.util.Map" >
+    insert into VALVE_USER
+    <selectKey resultType="java.lang.String" keyProperty="station"
+			order="BEFORE">
+			select sys_guid() from dual
+	</selectKey>
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+       station,
+      <if test="name != null"> name, </if>
+	<if test="password != null"> password, </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{station},
+     <if test="name != null"> #{name}, </if>
+	<if test="password != null"> #{password}, </if>
+    </trim>
+  </insert>
+  
+  <!-- 更新系统用户 -->
+    
+  <update id="update" parameterType="java.util.Map" >
+    update VALVE_USER
+     <set >
+      <if test="name != null">name = #{name}, </if>
+	<if test="password != null">password = #{password}, </if>
+    </set>
+    where station = #{station,jdbcType=VARCHAR}
+  </update>
+  <delete id="delete" parameterType="java.lang.String" >
+    delete from VALVE_USER
+    where station = #{station,jdbcType=VARCHAR}
+  </delete>
+  <!-- 逻辑删除系统用户 -->
+  
+  <update id="logicDelete" parameterType="java.util.Map" >
+    update VALVE_USER
+    set DELETE_FLAG = -1
+    where station = #{station,jdbcType=VARCHAR}
+  </update>
+</mapper>

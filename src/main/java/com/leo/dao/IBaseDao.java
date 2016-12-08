@@ -1,15 +1,12 @@
-package com.leo.dao;
+package com.cmos.weixincore.dao;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * Dao基类
- * @author leo
- *
+ * Dao接口基类
  */
 public interface IBaseDao {
-
 	/**
 	 * 根据Id获取对象
 	 * 
@@ -139,6 +136,5 @@ public interface IBaseDao {
 	 * @return 主键
 	 */
 	public int delete(String sqlId, Map<String, String> map);
-
 
 }

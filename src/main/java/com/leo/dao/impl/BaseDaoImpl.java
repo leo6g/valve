@@ -2,19 +2,26 @@ package com.leo.dao.impl;
 
 import java.util.List;
 import java.util.Map;
-import org.apache.ibatis.session.SqlSession;
+
+import org.mybatis.spring.SqlSessionTemplate;
+
 import com.leo.dao.IBaseDao;
 import com.leo.util.ConvertUtil;
 public class BaseDaoImpl implements IBaseDao {
-	private SqlSession sqlSession;
+	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public SqlSession getSqlSession() {
-		return sqlSession;
+	public SqlSessionTemplate getSqlSession() {
+		return sqlSessionTemplate;
 	}
 
-	public void setSqlSession(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
+	public SqlSessionTemplate getSqlSessionTemplate() {
+		return sqlSessionTemplate;
 	}
+
+	public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
+		this.sqlSessionTemplate = sqlSessionTemplate;
+	}
+
 	/**
 	 * 根据Id获取对象
 	 * 

@@ -2,6 +2,8 @@ package com.leo.controller;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,17 +13,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ai.frame.bean.InputObject;
 import com.ai.frame.bean.OutputObject;
+import com.lfc.core.util.ControlConstants;
 import com.lfc.core.util.JsonUtil;
 
-public class BaseContoller {
+public class BaseController {
 	@Autowired
 	BeanFactory beanFactory;
-	protected Logger logger = LoggerFactory.getLogger("BaseContoller");
+	private Logger logger = LoggerFactory.getLogger("BaseContoller");
 	public HttpServletRequest getRequest(){
 		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
 		return request;
@@ -30,6 +36,19 @@ public class BaseContoller {
 		HttpSession session = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest().getSession();
 		return session;
 	}
+	public OutputObject getOutputObject(Map<String, String> params,String service, String method){
+		if(StringUtils.isNotEmpty(method)&&StringUtils.isNotEmpty(service)){
+			InputObject inputObject = new InputObject();
+			inputObject.setService(service);
+			inputObject.setMethod(method);
+			inputObject.setParams(params);
+			execute(inputObject);
+		}else{
+			logger.info("SERVICE NAME OR METHOD NAME IS NULL!!!");
+		}
+		return null;
+	}
+	
 	public OutputObject getOutputObject(InputObject inputObj){
 		String service = inputObj.getService();
 		String method = inputObj.getMethod();
@@ -55,5 +74,37 @@ public class BaseContoller {
 			logger.info("execute INVOKE ERROR！");
 		}
 		
+	}
+	
+	/* bean校验ajax返回 */
+	protected OutputObject returnValidatorAjaxResult(BindingResult result) {
+		getParamValidateLog(result);
+		OutputObject outputObject = new OutputObject();
+		outputObject.setReturnCode(ControlConstants.RETURN_CODE.SYSTEM_ERROR);
+		outputObject.setReturnMessage("后台参数校验失败！");
+		return outputObject;
+	}
+
+	/* bean校验String返回 */
+	protected String returnValidatorStrResult(BindingResult result) {
+		getParamValidateLog(result);
+		return "error/500";
+	}
+
+	/* bean校验ModelAndView返回 */
+	protected ModelAndView returnValidatorMavResult(BindingResult result) {
+		getParamValidateLog(result);
+		return new ModelAndView("error/500");
+	}
+	/**
+	 * 输出参数校验错误信息
+	 * @param result
+	 */
+	private void getParamValidateLog(BindingResult result)
+	{
+	List<ObjectError> ls=result.getAllErrors();  
+    for (int i = 0; i < ls.size(); i++) {  
+        logger.error("参数校验错误{}",ls.get(i)); 
+    }  
 	}
 }
