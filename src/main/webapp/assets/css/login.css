@@ -46,8 +46,8 @@ input{
     background-color: #2D2D3F;    
 }    
 .but{    
-    width: 300px;    
-    min-height: 20px;    
+    width: 280px;    
+    height: 40px;    
     display: block;    
     background-color: #4a77d4;    
     border: 1px solid #3762bc;    

@@ -42,7 +42,7 @@
 
 	<!-- 配置映射文件 -->
 	<mappers>
-		
+		<mapper resource="mappings/SYSUserMapper.xml" />
 	</mappers>
 
 </configuration>

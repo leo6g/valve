@@ -77,9 +77,11 @@ public class SYSUserServiceImpl extends BaseServiceImpl implements ISYSUserServi
 		return getBaseDao().delete("SYSUserMapper.delete", inputObject.getParams());
 	}
 	@Override
-	public int checkUser(InputObject inputObject, OutputObject outputObject)
+	public void checkUser(InputObject inputObject, OutputObject outputObject)
 			throws Exception {
-		return getBaseDao().delete("SYSUserMapper.checkUser", inputObject.getParams());
+			Map<String,String> map = (Map<String,String> )getBaseDao().queryForObject("SYSUserMapper.checkUser", inputObject.getParams());
+			outputObject.setBean(map);
+			
 	}
 	
 	@Override

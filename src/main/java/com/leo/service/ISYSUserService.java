@@ -54,5 +54,5 @@ public interface ISYSUserService {
 	 * @throws Exception
 	 */
 	public int logicDeleteSYSUser(InputObject inputObject, OutputObject outputObject) throws Exception;
-	int checkUser(InputObject inputObject, OutputObject outputObject) throws Exception;
+	void checkUser(InputObject inputObject, OutputObject outputObject) throws Exception;
 }

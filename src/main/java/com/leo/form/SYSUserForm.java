@@ -1,20 +1,26 @@
 package com.leo.form;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class SYSUserForm extends BaseForm{
 
 	/*
 	字段注释：姓名
 	列名称:name
 	字段类型:varchar*/
+	@NotEmpty
 	private String name;
 	/*
 	字段注释：密码
 	列名称:password
 	字段类型:varchar*/
+	@NotEmpty
 	private String password;
 	/*
 	字段注释：工位号
 	列名称:station
 	字段类型:varchar*/
+	@NotEmpty
 	private String station;
 	
 	

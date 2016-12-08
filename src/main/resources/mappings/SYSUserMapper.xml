@@ -30,17 +30,6 @@
   <!-- 分页查询系统用户 -->
   
   <select id="getList" resultMap="BaseResultMap" >
-  	<include refid="common.Oracle_Pagination_Head" />
-	    select 
-	    <include refid="Base_Column_List" />
-	    from VALVE_USER
-	<if test="_parameter != null" >
-     	<include refid="Example_Where_Clause" />
-   	</if>
-    <if test="orderByClause != null" >
-     	order by ${orderByClause}
-    </if>
-    <include refid="common.Oracle_Pagination_Tail" />
   </select>
   
   <!-- 根据Id查询系统用户 -->
@@ -53,9 +42,9 @@
   </select>
   
     <select id="checkUser" resultMap="BaseResultMap" parameterType="java.util.Map" >
-    select conunt(1)
-    from VALVE_USER
-    <include refid="Example_Where_Clause" />
+    select
+    <include refid="Base_Column_List"></include>
+    from VALVE_USER where station = #{station} and name = #{name} and password = #{password}
   </select>
   
   <!-- 查询系统用户总数量 -->

@@ -49,18 +49,20 @@ public class BaseController {
 	}
 	
 	public OutputObject getOutputObject(InputObject inputObj){
+		OutputObject outObj =null;
 		String service = inputObj.getService();
 		String method = inputObj.getMethod();
 		if(StringUtils.isNotEmpty(method)&&StringUtils.isNotEmpty(service)){
-			execute(inputObj);
+			outObj = new OutputObject();
+			outObj = execute(inputObj);
 		}else{
 			logger.info("SERVICE NAME OR METHOD NAME IS NULL!!!");
 		}
-		return null;
+		return outObj;
 	}
-	private void execute(InputObject inputObj){
+	private OutputObject execute(InputObject inputObj){
 		long start = System.currentTimeMillis();
-		OutputObject outputObj = null;
+		OutputObject outputObj = new OutputObject();
 		String service = inputObj.getService();
 		String method = inputObj.getMethod();
 		try {
@@ -71,7 +73,9 @@ public class BaseController {
 			logger.info("INVOKE SECCESS!", "service=" + inputObj.getService() + "| method=" + inputObj.getMethod()+"|output="+JsonUtil.convertObject2Json(outputObj)+"|COST="+(System.currentTimeMillis() - start)+"ms");
 		} catch (Exception e) {
 			logger.info("execute INVOKE ERROR！");
+			e.printStackTrace();
 		}
+		return outputObj;
 		
 	}
 	
