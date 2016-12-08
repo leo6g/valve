@@ -1,4 +1,4 @@
-package com.cmos.weixincore.dao;
+package com.leo.dao;
 
 import java.util.List;
 import java.util.Map;
