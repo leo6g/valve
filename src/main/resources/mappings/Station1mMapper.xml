@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Station1mMapper" >
+  <resultMap id="BaseResultMap" type="java.util.Map" >
+  	<id column="id" property="id" jdbcType="VARCHAR"/>
+  	<result column="wxll" property="wxll" jdbcType="VARCHAR"/>
+	<result column="wlzlbzh_pressure" property="wlzlbzhPressure" jdbcType="VARCHAR"/>
+	<result column="wlxl_pressure" property="wlxlPressure" jdbcType="VARCHAR"/>
+	<result column="NLXL_PRESSURE" property="nlxlPressure" jdbcType="VARCHAR"/>
+	<result column="nxll" property="nxll" jdbcType="VARCHAR"/>
+	<result column="MACHINENUM" property="machinenum" jdbcType="VARCHAR"/>
+	<result column="nlxlbzh_pressure" property="nlxlbzhPressure" jdbcType="VARCHAR"/>
+	<result column="factorynumber" property="factorynumber" jdbcType="VARCHAR"/>
+	<result column="MACHINEtype" property="machinetype" jdbcType="VARCHAR"/>
+	<result column="linenum" property="linenum" jdbcType="VARCHAR"/>
+	<result column="wpnum" property="wpnum" jdbcType="VARCHAR"/>
+	<result column="creattime" property="creattime" jdbcType="VARCHAR"/>
+	<result column="batchnum" property="batchnum" jdbcType="VARCHAR"/>
+	<result column="stationnum" property="stationnum" jdbcType="VARCHAR"/>
+	<result column="port" property="port" jdbcType="VARCHAR"/>
+	<result column="station" property="station" jdbcType="VARCHAR"/>
+	<result column="result" property="result" jdbcType="VARCHAR"/>
+	<result column="barcode" property="barcode" jdbcType="VARCHAR"/>
+	
+  </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <trim prefix="where" prefixOverrides="and|or" >
+      <if test="wxll !=''" >
+		 AND wxll = #{wxll}
+	 </if>
+	<if test="wlzlbzhPressure !=''" >
+		 AND wlzlbzh_pressure = #{wlzlbzhPressure}
+	 </if>
+	<if test="wlxlPressure !=''" >
+		 AND wlxl_pressure = #{wlxlPressure}
+	 </if>
+	<if test="nlxlPressure !=''" >
+		 AND NLXL_PRESSURE = #{nlxlPressure}
+	 </if>
+	<if test="nxll !=''" >
+		 AND nxll = #{nxll}
+	 </if>
+	<if test="machinenum !=''" >
+		 AND MACHINENUM = #{machinenum}
+	 </if>
+	<if test="nlxlbzhPressure !=''" >
+		 AND nlxlbzh_pressure = #{nlxlbzhPressure}
+	 </if>
+	<if test="factorynumber !=''" >
+		 AND factorynumber = #{factorynumber}
+	 </if>
+	<if test="machinetype !=''" >
+		 AND MACHINEtype = #{machinetype}
+	 </if>
+	<if test="linenum !=''" >
+		 AND linenum = #{linenum}
+	 </if>
+	<if test="wpnum !=''" >
+		 AND wpnum = #{wpnum}
+	 </if>
+	<if test="id !=''" >
+		 AND id = #{id}
+	 </if>
+	<if test="creattime !=''" >
+		 AND creattime = #{creattime}
+	 </if>
+	<if test="batchnum !=''" >
+		 AND batchnum = #{batchnum}
+	 </if>
+	<if test="stationnum !=''" >
+		 AND stationnum = #{stationnum}
+	 </if>
+	<if test="port !=''" >
+		 AND port = #{port}
+	 </if>
+	<if test="station !=''" >
+		 AND station = #{station}
+	 </if>
+	<if test="result !=''" >
+		 AND result = #{result}
+	 </if>
+	<if test="barcode !=''" >
+		 AND barcode = #{barcode}
+	 </if>
+	     
+    </trim>
+  </sql>
+  
+  <sql id="Base_Column_List" >
+  	wxll,wlzlbzh_pressure,wlxl_pressure,NLXL_PRESSURE,nxll,MACHINENUM,nlxlbzh_pressure,factorynumber,MACHINEtype,linenum,wpnum,id,creattime,batchnum,stationnum,port,station,result,barcode
+  </sql>
+  
+  <!-- 分页查询密封性检测工位 -->
+  
+  <select id="getList" resultMap="BaseResultMap" >
+  	
+	    select 
+	    <include refid="Base_Column_List" />
+	    from STATION1M
+	<if test="_parameter !=''" >
+     	<include refid="Example_Where_Clause" />
+   	</if>
+  </select>
+  
+  <!-- 根据Id查询密封性检测工位 -->
+  
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from STATION1M
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 查询密封性检测工位总数量 -->
+  
+  <select id="countAll" resultType="java.lang.Integer" >
+	    select count(1)
+	    from STATION1M
+	    <!-- 有DELETE_FLAG放开-->
+	   <!-- where DELETE_FLAG = 0 -->
+  </select>
+  
+  <!-- 查询所有密封性检测工位 -->
+  
+  <select id="getAll" resultMap="BaseResultMap">
+    select 
+     <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from STATION1M 
+   <if test="_parameter !=''" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause !=''" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <!-- 根据密封性检测工位编码,查询密封性检测工位信息 有code验证时放开-->
+   <!-- <select id="getByCode" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from STATION1M
+    where  = #{,jdbcType=}
+    AND DELETE_FLAG = 0 
+    <if test="id !=''" >
+    	and id != #{id,jdbcType=VARCHAR}
+    </if>
+  </select> -->
+  
+  <!-- 增加密封性检测工位 -->
+  
+  <insert id="insert" parameterType="java.util.Map" >
+    insert into STATION1M
+    <selectKey resultType="java.lang.String" keyProperty="id"
+			order="BEFORE">
+			select sys_guid() from dual
+	</selectKey>
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+       id,
+      <if test="wxll !=''"> wxll, </if>
+	<if test="wlzlbzhPressure !=''"> wlzlbzh_pressure, </if>
+	<if test="wlxlPressure !=''"> wlxl_pressure, </if>
+	<if test="nlxlPressure !=''"> NLXL_PRESSURE, </if>
+	<if test="nxll !=''"> nxll, </if>
+	<if test="machinenum !=''"> MACHINENUM, </if>
+	<if test="nlxlbzhPressure !=''"> nlxlbzh_pressure, </if>
+	<if test="factorynumber !=''"> factorynumber, </if>
+	<if test="machinetype !=''"> MACHINEtype, </if>
+	<if test="linenum !=''"> linenum, </if>
+	<if test="wpnum !=''"> wpnum, </if>
+	<if test="creattime !=''"> creattime, </if>
+	<if test="batchnum !=''"> batchnum, </if>
+	<if test="stationnum !=''"> stationnum, </if>
+	<if test="port !=''"> port, </if>
+	<if test="station !=''"> station, </if>
+	<if test="result !=''"> result, </if>
+	<if test="barcode !=''"> barcode, </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id},
+     <if test="wxll !=''"> #{wxll}, </if>
+	<if test="wlzlbzhPressure !=''"> #{wlzlbzhPressure}, </if>
+	<if test="wlxlPressure !=''"> #{wlxlPressure}, </if>
+	<if test="nlxlPressure !=''"> #{nlxlPressure}, </if>
+	<if test="nxll !=''"> #{nxll}, </if>
+	<if test="machinenum !=''"> #{machinenum}, </if>
+	<if test="nlxlbzhPressure !=''"> #{nlxlbzhPressure}, </if>
+	<if test="factorynumber !=''"> #{factorynumber}, </if>
+	<if test="machinetype !=''"> #{machinetype}, </if>
+	<if test="linenum !=''"> #{linenum}, </if>
+	<if test="wpnum !=''"> #{wpnum}, </if>
+	<if test="creattime !=''"> #{creattime}, </if>
+	<if test="batchnum !=''"> #{batchnum}, </if>
+	<if test="stationnum !=''"> #{stationnum}, </if>
+	<if test="port !=''"> #{port}, </if>
+	<if test="station !=''"> #{station}, </if>
+	<if test="result !=''"> #{result}, </if>
+	<if test="barcode !=''"> #{barcode}, </if>
+    </trim>
+  </insert>
+  
+  <!-- 更新密封性检测工位 -->
+  
+    
+  <update id="update" parameterType="java.util.Map" >
+    update STATION1M
+     <set >
+      <if test="wxll !=''">wxll = #{wxll}, </if>
+	<if test="wlzlbzhPressure !=''">wlzlbzh_pressure = #{wlzlbzhPressure}, </if>
+	<if test="wlxlPressure !=''">wlxl_pressure = #{wlxlPressure}, </if>
+	<if test="nlxlPressure !=''">NLXL_PRESSURE = #{nlxlPressure}, </if>
+	<if test="nxll !=''">nxll = #{nxll}, </if>
+	<if test="machinenum !=''">MACHINENUM = #{machinenum}, </if>
+	<if test="nlxlbzhPressure !=''">nlxlbzh_pressure = #{nlxlbzhPressure}, </if>
+	<if test="factorynumber !=''">factorynumber = #{factorynumber}, </if>
+	<if test="machinetype !=''">MACHINEtype = #{machinetype}, </if>
+	<if test="linenum !=''">linenum = #{linenum}, </if>
+	<if test="wpnum !=''">wpnum = #{wpnum}, </if>
+	<if test="creattime !=''">creattime = #{creattime}, </if>
+	<if test="batchnum !=''">batchnum = #{batchnum}, </if>
+	<if test="stationnum !=''">stationnum = #{stationnum}, </if>
+	<if test="port !=''">port = #{port}, </if>
+	<if test="station !=''">station = #{station}, </if>
+	<if test="result !=''">result = #{result}, </if>
+	<if test="barcode !=''">barcode = #{barcode}, </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <delete id="delete" parameterType="java.lang.String" >
+    delete from STATION1M
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <!-- 逻辑删除密封性检测工位 -->
+  
+  <update id="logicDelete" parameterType="java.util.Map" >
+    update STATION1M
+    set DELETE_FLAG = -1
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

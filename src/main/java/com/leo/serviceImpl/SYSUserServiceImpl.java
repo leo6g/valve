@@ -19,7 +19,7 @@ public class SYSUserServiceImpl extends BaseServiceImpl implements ISYSUserServi
 			OutputObject outputObject) throws Exception {
 		List<Map<String, String>> list= getBaseDao().queryForList("SYSUserMapper.getList", inputObject.getParams());
 		outputObject.setBeans(list);
-		int totalcount = getBaseDao().getTotalCount("SYSUserMapper.queryUserCount", inputObject.getParams());
+		int totalcount = getBaseDao().getTotalCount("SYSUserMapper.countAll", inputObject.getParams());
 		outputObject.setObject(totalcount);
 		 logger.info("getList success");
 	}

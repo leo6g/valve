@@ -1,0 +1,290 @@
+﻿<!-- Content Wrapper. Contains page content -->
+ <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/密封性检测查询/styles.css" type="text/css" rel="stylesheet"/>
+ #parse("common.html")
+    <script type="text/javascript" src="${contextPath}/assets/js/jump.js"></script>
+    <script type="text/javascript" src="${contextPath}/assets/js/station1m.js"></script>
+    <aside class="main-sidebar" style="width:10%;min-height: 515px;">
+	<section class="sidebar" style="width:10%;min-height: 515px;">
+      <!-- Unnamed (Shape) -->
+      <div id="u230" class="ax_shape">
+        <img id="u230_img" class="img " src="images/0首工位/u4.png"/>
+        <!-- Unnamed () -->
+        <div id="u231" class="text">
+          <p><span></span></p>
+        </div>
+      </div>
+      <!-- Unnamed (Image) -->
+      <div id="u234" class="ax_image">
+        <img id="u234_img" class="img " src="images/0首工位/u8.png"/>
+        <!-- Unnamed () -->
+        <div id="u235" class="text">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u236" class="ax_shape">
+        <img id="u236_img" class="img " src="images/0首工位/u26.png"/>
+        <!-- Unnamed () -->
+        <div id="u237" class="text">
+          <p><span>工位号</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u238" class="ax_shape">
+        <img id="u238_img" class="img " src="images/0首工位/u28.png"/>
+        <!-- Unnamed () -->
+        <div id="u239" class="text">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u240" class="ax_shape">
+        <img id="u240_img" class="img " src="images/0首工位/u26.png"/>
+        <!-- Unnamed () -->
+        <div id="u241" class="text">
+          <p><span>数据查询</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u242" class="ax_shape">
+        <img id="u242_img" class="img " src="images/0首工位/u28.png"/>
+        <!-- Unnamed () -->
+        <div id="u243" class="text">
+          <p><span></span></p>
+        </div>
+      </div>
+      <!-- Unnamed (Shape) -->
+      <div id="u246" class="ax_paragraph">
+        <img id="u246_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u247" class="text">
+          <p><span></span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Hot Spot) -->
+      <div id="u248" class="ax_hot_spot">
+      </div>
+
+      <!-- Unnamed (Table) -->
+      <!-- Unnamed (Shape) -->
+      <div id="u552" class="ax_paragraph">
+        <img id="u552_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u553" class="text">
+          <p id="station0s"><span>0首工位</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u554" class="ax_paragraph">
+        <img id="u554_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u555" class="text">
+           <p id="station1m"><span>1</span><span>密封性检测</span><span>工位</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u556" class="ax_paragraph">
+        <img id="u556_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u557" class="text">
+          <p id="station2d"><span>2电性能检测工位</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u558" class="ax_paragraph">
+        <img id="u558_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u559" class="text">
+          <p id="station9w"><span>9</span><span>尾工位</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u560" class="ax_paragraph">
+        <img id="u560_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u561" class="text">
+          <p id="testingProcedures"><span>检测</span><span>流程查询</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u562" class="ax_paragraph">
+        <img id="u562_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u563" class="text">
+          <p id="sealingTest"><span>密封性</span><span>测试</span><span>查询</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u564" class="ax_paragraph">
+        <img id="u564_img" class="img " src="resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u565" class="text">
+          <p id="electrical"><span>电性能</span><span>测试查询</span></p>
+        </div>
+      </div>
+    </div>
+</aside>
+
+<div class="content-wrapper">
+    <div class="container">
+        <h4 class="main-title">密封性检测工位管理</h4>
+         <form id="queryForm">
+			<div class="row query-box">
+			<div class="col-xs-5 box-md">
+					开始： <input type="text" placeholder="开始时间" name="beginTime" onclick="laydate()" /> -
+					结束<input type="text" placeholder="结束时间" name="endTime" onclick="laydate()" />
+				</div>
+				<div class="col-xs-5 box-md" style="margin-top:10px;" >
+					测试工位号：
+					<select name="msgType" id="queryMsgType" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
+                		<option value="" selected>---请选择---</option>       
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+				</div>
+				<div class="col-xs-5 box-md" style="margin-top:10px;">
+					阀门条码：
+					<select name="msgType" id="queryMsgType" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
+                		<option value="" selected>---请选择---</option>       
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+				</div>
+				<div class="col-xs-5 box-md" style="margin-top:10px;">
+					电机阀型号：
+					<select name="msgType" id="queryMsgType" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
+                		<option value="" selected>---请选择---</option>       
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+				</div>
+				<div class="col-xs-5 box-md" style="margin-top:10px;">
+					电机阀型号：
+					<select name="msgType" id="queryMsgType" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
+                		<option value="" selected>---请选择---</option>       
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+				</div>
+				<div class="col-xs-5 box-md" style="margin-top:10px;" >
+					测试结果：
+					<select name="msgType" id="queryMsgType" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
+                		<option value="" selected>---请选择---</option>       
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+				</div>
+				<div class="col-xs-5 box-md" style="margin-top:10px;">
+					检验员：
+					<select name="msgType" id="queryMsgType" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
+                		<option value="" selected>---请选择---</option>       
+                       <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+				</div>
+				<div class="col-xs-2 box-bt" style="margin-top:10px;">
+					<input type="button" class="btn btn-primary" style="margin:0" id="querySubmit" value="查 询"/>
+				</div>
+			</div>
+		</form>
+        <div class="row query-box" style="margin-bottom: 0px;">
+            <div id="demo"></div>
+            <div class="info-wrap">
+                <div style="margin-top: 0px;">
+                    <div class="info-item-box fl" style="width:70%;min-height: 515px;">
+                        <div class="info-item-title">
+                            密封性检测工位信息
+                        </div>
+                        <div class="info-item-content">
+                            <table id="station1mListTable" class="table border-table table-hover align-center-table" style="width:96%;font-size: 10;">
+                            <!-- 动态显示列表 -->
+                            </table>
+                            <div class="page-box" style="width: 97%;margin:0 auto" >
+                                <span style="float:left" class="pagination" id="totalNum" ></span>
+                                <ul style="float: right;" id="pagination"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 公共提示弹窗 -->
+<div id="alert-info" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" id="alert-info-content" ></div>
+  </div>
+</div>
+</body>
+<script id="station1m-list-template" type="text/x-handlebars-template">
+	<tbody>
+		<tr>
+			<th>序号</th>
+			<th>外泄漏量</th>
+			<th>外漏泄漏标准/气压</th>
+			<th>外漏泄漏气压</th>
+			<th>内漏泄漏气压</th>
+			<th>内泄漏量</th>
+			<th>电机阀编号</th>
+			<th>内漏泄漏标准/气压</th>
+			<th>出厂编号</th>
+			<th>电机阀型号</th>
+			<th>线别</th>
+			<th>车间号</th>
+			<th style="display:none">id</th>
+			<th>检测时间</th>
+			<th>批次号</th>
+			<th>工位序号</th>
+			<th>端口号</th>
+			<th>工位号</th>
+			<th>检测结果</th>
+			<th>阀门条码</th>
+		</tr>
+	  {{#each this}}
+		<tr>
+        	<td>{{ORACLESTART}}</td>
+			<td>{{wxll}}</td>
+			<td>{{wlzlbzhPressure}}</td>
+			<td>{{wlxlPressure}}</td>
+			<td>{{nlxlPressure}}</td>
+			<td>{{nxll}}</td>
+			<td>{{machinenum}}</td>
+			<td>{{nlxlbzhPressure}}</td>
+			<td>{{factorynumber}}</td>
+			<td>{{machinetype}}</td>
+			<td>{{linenum}}</td>
+			<td>{{wpnum}}</td>
+			<td style="display:none">{{id}}</td>
+			<td>{{creattime}}</td>
+			<td>{{batchnum}}</td>
+			<td>{{stationnum}}</td>
+			<td>{{port}}</td>
+			<td>{{station}}</td>
+			<td>{{result}}</td>
+			<td>{{barcode}}</td>
+    	</tr> 
+	  {{/each}}
+	</tbody>
+</script>

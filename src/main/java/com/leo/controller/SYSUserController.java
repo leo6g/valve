@@ -30,7 +30,7 @@ import com.leo.form.SYSUserForm;
  *
  */
 @Controller
-@RequestMapping("")
+@RequestMapping("sYSUser")
 public class SYSUserController extends BaseController{
 	
 	

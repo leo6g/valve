@@ -50,6 +50,7 @@
 				<artifactId>maven-jetty-plugin</artifactId>
 				<version>6.0.0</version>
 				<configuration>
+					<reload>manual</reload>
 					<contextPath>/valve</contextPath>
 					<scanIntervalSeconds>300</scanIntervalSeconds>
 					<connectors>

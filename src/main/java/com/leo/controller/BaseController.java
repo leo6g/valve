@@ -36,16 +36,17 @@ public class BaseController {
 		return session;
 	}
 	public OutputObject getOutputObject(Map<String, String> params,String service, String method){
+		OutputObject outObj =null;
 		if(StringUtils.isNotEmpty(method)&&StringUtils.isNotEmpty(service)){
 			InputObject inputObject = new InputObject();
 			inputObject.setService(service);
 			inputObject.setMethod(method);
 			inputObject.setParams(params);
-			execute(inputObject);
+			outObj=execute(inputObject);
 		}else{
 			logger.info("SERVICE NAME OR METHOD NAME IS NULL!!!");
 		}
-		return null;
+		return outObj;
 	}
 	
 	public OutputObject getOutputObject(InputObject inputObj){
@@ -66,11 +67,11 @@ public class BaseController {
 		String service = inputObj.getService();
 		String method = inputObj.getMethod();
 		try {
-			logger.info("INVOKE SECCESS!", "service=" + inputObj.getService() + "| method=" + inputObj.getMethod()+"|input="+JsonUtil.convertObject2Json(inputObj)+"|COST="+(System.currentTimeMillis() - start)+"ms");
+			logger.info("INVOKE START!", "service=" + inputObj.getService() + "| method=" + inputObj.getMethod()+"|input="+JsonUtil.convertObject2Json(inputObj)+"|COST="+(System.currentTimeMillis() - start)+"ms");
 			Object obj = beanFactory.getBean(service);
 			Method mth = obj.getClass().getMethod(method, InputObject.class,OutputObject.class);
 			mth.invoke(obj, inputObj,outputObj);
-			logger.info("INVOKE SECCESS!", "service=" + inputObj.getService() + "| method=" + inputObj.getMethod()+"|output="+JsonUtil.convertObject2Json(outputObj)+"|COST="+(System.currentTimeMillis() - start)+"ms");
+			logger.info("INVOKE SUCCESS!", "service=" + inputObj.getService() + "| method=" + inputObj.getMethod()+"|output="+JsonUtil.convertObject2Json(outputObj)+"|COST="+(System.currentTimeMillis() - start)+"ms");
 		} catch (Exception e) {
 			logger.info("execute INVOKE ERROR！");
 			e.printStackTrace();

@@ -20,28 +20,56 @@ import com.leo.util.StringUtil;
 @Controller
 public class LoginController extends BaseController {
 	
-	@RequestMapping(value="0首工位")
-	public ModelAndView station0(ModelAndView mv){
-		mv.setViewName("0首工位");
+	@RequestMapping(value="station0s")
+	public ModelAndView station0s(ModelAndView mv){
+		mv.setViewName("station0s");
+		return mv;
+	}
+	@RequestMapping(value="station1m")
+	public ModelAndView station1m(ModelAndView mv){
+		mv.setViewName("station1m");
+		return mv;
+	}
+	@RequestMapping(value="station2d")
+	public ModelAndView station2d(ModelAndView mv){
+		mv.setViewName("station2d");
+		return mv;
+	}
+	@RequestMapping(value="station9w")
+	public ModelAndView station9w(ModelAndView mv){
+		mv.setViewName("station9w");
+		return mv;
+	}
+	@RequestMapping(value="sealingTest")
+	public ModelAndView sealingTest(ModelAndView mv){
+		mv.setViewName("sealingTest");
+		return mv;
+	}
+	@RequestMapping(value="testingProcedures")
+	public ModelAndView testingProcedures(ModelAndView mv){
+		mv.setViewName("testingProcedures");
+		return mv;
+	}
+	@RequestMapping(value="electrical")
+	public ModelAndView electrical(ModelAndView mv){
+		mv.setViewName("electrical");
 		return mv;
 	}
 	
+	
 	@RequestMapping(value="login")
 	public ModelAndView login(ModelAndView mv,HttpServletRequest request){
-		
 		String userName = (String)getSession().getAttribute("userName");
-//		if(StringUtil.isEmpty(userName)){
-//			mv.setViewName("登陆界面");
-//		}else{
-//			mv.setViewName("0首工位");
-//			mv.addObject("username", "heeee");
-//		}
-		mv.setViewName("登陆界面");
+		if(StringUtil.isNotEmpty(userName)){
+			mv.setViewName("station0s");
+		}else{
+			mv.setViewName("login");
+		}
 		return mv;
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="checkUser")
+	@RequestMapping(value="login/checkUser")
 	public OutputObject checkUser(@ModelAttribute("sYSUserForm") SYSUserForm sYSUserForm,HttpServletRequest request,HttpServletResponse response
 			,BindingResult result){
 		if (result.hasErrors()) {
@@ -61,7 +89,6 @@ public class LoginController extends BaseController {
 			out.setReturnCode("1");
 			getSession().setAttribute("userName", out.getBean().get("name"));
 			getSession().setAttribute("station", out.getBean().get("station"));
-			out.setReturnMessage("恭喜。。登陆成功");
 		}
 		return out;
 	}

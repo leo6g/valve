@@ -42,6 +42,10 @@
 
 	<!-- 配置映射文件 -->
 	<mappers>
+		<mapper resource="mappings/Station0sMapper.xml" />
+		<mapper resource="mappings/Station1mMapper.xml" />
+		<mapper resource="mappings/Station2dMapper.xml" />
+		<mapper resource="mappings/Station9wMapper.xml" />
 		<mapper resource="mappings/SYSUserMapper.xml" />
 	</mappers>
 
