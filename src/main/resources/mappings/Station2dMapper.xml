@@ -26,61 +26,61 @@
   
   <sql id="Example_Where_Clause" >
     <trim prefix="where" prefixOverrides="and|or" >
-      <if test="testtimes != null" >
+      <if test="testtimes !=''" >
 		 AND TESTTIMEs = #{testtimes}
 	 </if>
-	<if test="endtime != null" >
+	<if test="endtime !=''" >
 		 AND ENDTIME = #{endtime}
 	 </if>
-	<if test="enda != null" >
+	<if test="enda !=''" >
 		 AND ENDA = #{enda}
 	 </if>
-	<if test="starttime != null" >
+	<if test="starttime !=''" >
 		 AND STARTTIME = #{starttime}
 	 </if>
-	<if test="starta != null" >
+	<if test="starta !=''" >
 		 AND STARTA = #{starta}
 	 </if>
-	<if test="machinenum != null" >
+	<if test="machinenum !=''" >
 		 AND MACHINENUM = #{machinenum}
 	 </if>
-	<if test="testa != null" >
+	<if test="testa !=''" >
 		 AND testa = #{testa}
 	 </if>
-	<if test="factorynumber != null" >
+	<if test="factorynumber !=''" >
 		 AND factorynumber = #{factorynumber}
 	 </if>
-	<if test="machinetype != null" >
+	<if test="machinetype !=''" >
 		 AND MACHINEtype = #{machinetype}
 	 </if>
-	<if test="linenum != null" >
+	<if test="linenum !=''" >
 		 AND linenum = #{linenum}
 	 </if>
-	<if test="wpnum != null" >
+	<if test="wpnum !=''" >
 		 AND wpnum = #{wpnum}
 	 </if>
-	<if test="id != null" >
+	<if test="id !=''" >
 		 AND id = #{id}
 	 </if>
-	<if test="creattime != null" >
+	<if test="creattime !=''" >
 		 AND creattime = #{creattime}
 	 </if>
-	<if test="batchnum != null" >
+	<if test="batchnum !=''" >
 		 AND batchnum = #{batchnum}
 	 </if>
-	<if test="stationnum != null" >
+	<if test="stationnum !=''" >
 		 AND stationnum = #{stationnum}
 	 </if>
-	<if test="port != null" >
+	<if test="port !=''" >
 		 AND port = #{port}
 	 </if>
-	<if test="station != null" >
+	<if test="station !=''" >
 		 AND station = #{station}
 	 </if>
-	<if test="result != null" >
+	<if test="result !=''" >
 		 AND result = #{result}
 	 </if>
-	<if test="barcode != null" >
+	<if test="barcode !=''" >
 		 AND barcode = #{barcode}
 	 </if>
 	     
@@ -98,12 +98,9 @@
 	    select 
 	    <include refid="Base_Column_List" />
 	    from STATION2D
-	<if test="_parameter != null" >
+	<if test="_parameter !=''" >
      	<include refid="Example_Where_Clause" />
    	</if>
-    <if test="orderByClause != null" >
-     	order by ${orderByClause}
-    </if>
     
   </select>
   
@@ -134,10 +131,10 @@
     </if>
     <include refid="Base_Column_List" />
     from STATION2D 
-   <if test="_parameter != null" >
+   <if test="_parameter !=''" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause !=''" >
       order by ${orderByClause}
     </if>
   </select>
@@ -148,7 +145,7 @@
     from STATION2D
     where  = #{,jdbcType=}
     AND DELETE_FLAG = 0 
-    <if test="id != null" >
+    <if test="id !=''" >
     	and id != #{id,jdbcType=VARCHAR}
     </if>
   </select> -->
@@ -163,45 +160,45 @@
 	</selectKey>
     <trim prefix="(" suffix=")" suffixOverrides="," >
        id,
-      <if test="testtimes != null"> TESTTIMEs, </if>
-	<if test="endtime != null"> ENDTIME, </if>
-	<if test="enda != null"> ENDA, </if>
-	<if test="starttime != null"> STARTTIME, </if>
-	<if test="starta != null"> STARTA, </if>
-	<if test="machinenum != null"> MACHINENUM, </if>
-	<if test="testa != null"> testa, </if>
-	<if test="factorynumber != null"> factorynumber, </if>
-	<if test="machinetype != null"> MACHINEtype, </if>
-	<if test="linenum != null"> linenum, </if>
-	<if test="wpnum != null"> wpnum, </if>
-	<if test="creattime != null"> creattime, </if>
-	<if test="batchnum != null"> batchnum, </if>
-	<if test="stationnum != null"> stationnum, </if>
-	<if test="port != null"> port, </if>
-	<if test="station != null"> station, </if>
-	<if test="result != null"> result, </if>
-	<if test="barcode != null"> barcode, </if>
+      <if test="testtimes !=''"> TESTTIMEs, </if>
+	<if test="endtime !=''"> ENDTIME, </if>
+	<if test="enda !=''"> ENDA, </if>
+	<if test="starttime !=''"> STARTTIME, </if>
+	<if test="starta !=''"> STARTA, </if>
+	<if test="machinenum !=''"> MACHINENUM, </if>
+	<if test="testa !=''"> testa, </if>
+	<if test="factorynumber !=''"> factorynumber, </if>
+	<if test="machinetype !=''"> MACHINEtype, </if>
+	<if test="linenum !=''"> linenum, </if>
+	<if test="wpnum !=''"> wpnum, </if>
+	<if test="creattime !=''"> creattime, </if>
+	<if test="batchnum !=''"> batchnum, </if>
+	<if test="stationnum !=''"> stationnum, </if>
+	<if test="port !=''"> port, </if>
+	<if test="station !=''"> station, </if>
+	<if test="result !=''"> result, </if>
+	<if test="barcode !=''"> barcode, </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       #{id},
-     <if test="testtimes != null"> #{testtimes}, </if>
-	<if test="endtime != null"> #{endtime}, </if>
-	<if test="enda != null"> #{enda}, </if>
-	<if test="starttime != null"> #{starttime}, </if>
-	<if test="starta != null"> #{starta}, </if>
-	<if test="machinenum != null"> #{machinenum}, </if>
-	<if test="testa != null"> #{testa}, </if>
-	<if test="factorynumber != null"> #{factorynumber}, </if>
-	<if test="machinetype != null"> #{machinetype}, </if>
-	<if test="linenum != null"> #{linenum}, </if>
-	<if test="wpnum != null"> #{wpnum}, </if>
-	<if test="creattime != null"> #{creattime}, </if>
-	<if test="batchnum != null"> #{batchnum}, </if>
-	<if test="stationnum != null"> #{stationnum}, </if>
-	<if test="port != null"> #{port}, </if>
-	<if test="station != null"> #{station}, </if>
-	<if test="result != null"> #{result}, </if>
-	<if test="barcode != null"> #{barcode}, </if>
+     <if test="testtimes !=''"> #{testtimes}, </if>
+	<if test="endtime !=''"> #{endtime}, </if>
+	<if test="enda !=''"> #{enda}, </if>
+	<if test="starttime !=''"> #{starttime}, </if>
+	<if test="starta !=''"> #{starta}, </if>
+	<if test="machinenum !=''"> #{machinenum}, </if>
+	<if test="testa !=''"> #{testa}, </if>
+	<if test="factorynumber !=''"> #{factorynumber}, </if>
+	<if test="machinetype !=''"> #{machinetype}, </if>
+	<if test="linenum !=''"> #{linenum}, </if>
+	<if test="wpnum !=''"> #{wpnum}, </if>
+	<if test="creattime !=''"> #{creattime}, </if>
+	<if test="batchnum !=''"> #{batchnum}, </if>
+	<if test="stationnum !=''"> #{stationnum}, </if>
+	<if test="port !=''"> #{port}, </if>
+	<if test="station !=''"> #{station}, </if>
+	<if test="result !=''"> #{result}, </if>
+	<if test="barcode !=''"> #{barcode}, </if>
     </trim>
   </insert>
   
@@ -210,24 +207,24 @@
   <update id="update" parameterType="java.util.Map" >
     update STATION2D
      <set >
-      <if test="testtimes != null">TESTTIMEs = #{testtimes}, </if>
-	<if test="endtime != null">ENDTIME = #{endtime}, </if>
-	<if test="enda != null">ENDA = #{enda}, </if>
-	<if test="starttime != null">STARTTIME = #{starttime}, </if>
-	<if test="starta != null">STARTA = #{starta}, </if>
-	<if test="machinenum != null">MACHINENUM = #{machinenum}, </if>
-	<if test="testa != null">testa = #{testa}, </if>
-	<if test="factorynumber != null">factorynumber = #{factorynumber}, </if>
-	<if test="machinetype != null">MACHINEtype = #{machinetype}, </if>
-	<if test="linenum != null">linenum = #{linenum}, </if>
-	<if test="wpnum != null">wpnum = #{wpnum}, </if>
-	<if test="creattime != null">creattime = #{creattime}, </if>
-	<if test="batchnum != null">batchnum = #{batchnum}, </if>
-	<if test="stationnum != null">stationnum = #{stationnum}, </if>
-	<if test="port != null">port = #{port}, </if>
-	<if test="station != null">station = #{station}, </if>
-	<if test="result != null">result = #{result}, </if>
-	<if test="barcode != null">barcode = #{barcode}, </if>
+      <if test="testtimes !=''">TESTTIMEs = #{testtimes}, </if>
+	<if test="endtime !=''">ENDTIME = #{endtime}, </if>
+	<if test="enda !=''">ENDA = #{enda}, </if>
+	<if test="starttime !=''">STARTTIME = #{starttime}, </if>
+	<if test="starta !=''">STARTA = #{starta}, </if>
+	<if test="machinenum !=''">MACHINENUM = #{machinenum}, </if>
+	<if test="testa !=''">testa = #{testa}, </if>
+	<if test="factorynumber !=''">factorynumber = #{factorynumber}, </if>
+	<if test="machinetype !=''">MACHINEtype = #{machinetype}, </if>
+	<if test="linenum !=''">linenum = #{linenum}, </if>
+	<if test="wpnum !=''">wpnum = #{wpnum}, </if>
+	<if test="creattime !=''">creattime = #{creattime}, </if>
+	<if test="batchnum !=''">batchnum = #{batchnum}, </if>
+	<if test="stationnum !=''">stationnum = #{stationnum}, </if>
+	<if test="port !=''">port = #{port}, </if>
+	<if test="station !=''">station = #{station}, </if>
+	<if test="result !=''">result = #{result}, </if>
+	<if test="barcode !=''">barcode = #{barcode}, </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>

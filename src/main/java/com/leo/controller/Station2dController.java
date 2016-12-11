@@ -67,6 +67,7 @@ public class Station2dController extends BaseController{
 		OutputObject outputObject = null;
 		Map<String,String> map = BeanUtil.convertBean2Map(station2dForm);
 		outputObject = getOutputObject(map, "station2dService", "getList");
+		outputObject.setReturnCode("1");
 		return outputObject;
 	}
 	/**
