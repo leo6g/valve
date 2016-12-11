@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ProcedureMapper" >
+  <resultMap id="BaseResultMap" type="java.util.Map" >
+  	<id column="id" property="id" jdbcType="VARCHAR"/>
+  	<result column="batchnum" property="batchnum" jdbcType="VARCHAR"/>
+	<result column="barcode" property="barcode" jdbcType="VARCHAR"/>
+	<result column="statioin9w" property="statioin9w" jdbcType="VARCHAR"/>
+	<result column="station1mtime" property="station1mtime" jdbcType="VARCHAR"/>
+	<result column="station1m" property="station1m" jdbcType="VARCHAR"/>
+	<result column="station0stime" property="station0stime" jdbcType="VARCHAR"/>
+	<result column="station0s" property="station0s" jdbcType="VARCHAR"/>
+	<result column="station2dtime" property="station2dtime" jdbcType="VARCHAR"/>
+	<result column="station2d" property="station2d" jdbcType="VARCHAR"/>
+	<result column="station9wtime" property="station9wtime" jdbcType="VARCHAR"/>
+	<result column="station" property="station" jdbcType="VARCHAR"/>
+	
+  </resultMap>
+  
+  <sql id="Example_Where_Clause" >
+    <trim prefix="where" prefixOverrides="and|or" >
+      <if test="batchnum !=''" >
+		 AND batchnum = #{batchnum}
+	 </if>
+	<if test="barcode !=''" >
+		 AND barcode = #{barcode}
+	 </if>
+	<if test="statioin9w !=''" >
+		 AND statioin9w = #{statioin9w}
+	 </if>
+	<if test="id !=''" >
+		 AND id = #{id}
+	 </if>
+	<if test="station1mtime !=''" >
+		 AND station1mtime = #{station1mtime}
+	 </if>
+	<if test="station1m !=''" >
+		 AND station1m = #{station1m}
+	 </if>
+	<if test="station0stime !=''" >
+		 AND station0stime = #{station0stime}
+	 </if>
+	<if test="station0s !=''" >
+		 AND station0s = #{station0s}
+	 </if>
+	<if test="station2dtime !=''" >
+		 AND station2dtime = #{station2dtime}
+	 </if>
+	<if test="station2d !=''" >
+		 AND station2d = #{station2d}
+	 </if>
+	<if test="station9wtime !=''" >
+		 AND station9wtime = #{station9wtime}
+	 </if>
+	<if test="station !=''" >
+		 AND station = #{station}
+	 </if>
+	     
+    </trim>
+  </sql>
+  
+  <sql id="Base_Column_List" >
+  	batchnum,barcode,statioin9w,id,station1mtime,station1m,station0stime,station0s,station2dtime,station2d,station9wtime,station
+  </sql>
+  
+  <!-- 分页查询检测流程 -->
+  
+  <select id="getList" resultMap="BaseResultMap" >
+  	
+	    select 
+	    <include refid="Base_Column_List" />
+	    from procedures
+	<if test="_parameter !=''" >
+     	<include refid="Example_Where_Clause" />
+   	</if>
+  </select>
+  
+  <!-- 根据Id查询检测流程 -->
+  
+  <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from procedures
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 查询检测流程总数量 -->
+  
+  <select id="countAll" resultType="java.lang.Integer" >
+	    select count(1)
+	    from procedures
+	    <!-- 有DELETE_FLAG放开-->
+	   <!-- where DELETE_FLAG = 0 -->
+  </select>
+  
+  <!-- 查询所有检测流程 -->
+  
+  <select id="getAll" resultMap="BaseResultMap">
+    select 
+     <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from procedures 
+   <if test="_parameter !=''" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause !=''" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <!-- 根据检测流程编码,查询检测流程信息 有code验证时放开-->
+   <!-- <select id="getByCode" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from procedures
+    where  = #{,jdbcType=}
+    AND DELETE_FLAG = 0 
+    <if test="id !=''" >
+    	and id != #{id,jdbcType=VARCHAR}
+    </if>
+  </select> -->
+  
+  <!-- 增加检测流程 -->
+  
+  <insert id="insert" parameterType="java.util.Map" >
+    insert into procedures
+    <selectKey resultType="java.lang.String" keyProperty="id"
+			order="BEFORE">
+			select sys_guid() from dual
+	</selectKey>
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+       id,
+      <if test="batchnum !=''"> batchnum, </if>
+	<if test="barcode !=''"> barcode, </if>
+	<if test="statioin9w !=''"> statioin9w, </if>
+	<if test="station1mtime !=''"> station1mtime, </if>
+	<if test="station1m !=''"> station1m, </if>
+	<if test="station0stime !=''"> station0stime, </if>
+	<if test="station0s !=''"> station0s, </if>
+	<if test="station2dtime !=''"> station2dtime, </if>
+	<if test="station2d !=''"> station2d, </if>
+	<if test="station9wtime !=''"> station9wtime, </if>
+	<if test="station !=''"> station, </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id},
+     <if test="batchnum !=''"> #{batchnum}, </if>
+	<if test="barcode !=''"> #{barcode}, </if>
+	<if test="statioin9w !=''"> #{statioin9w}, </if>
+	<if test="station1mtime !=''"> #{station1mtime}, </if>
+	<if test="station1m !=''"> #{station1m}, </if>
+	<if test="station0stime !=''"> #{station0stime}, </if>
+	<if test="station0s !=''"> #{station0s}, </if>
+	<if test="station2dtime !=''"> #{station2dtime}, </if>
+	<if test="station2d !=''"> #{station2d}, </if>
+	<if test="station9wtime !=''"> #{station9wtime}, </if>
+	<if test="station !=''"> #{station}, </if>
+    </trim>
+  </insert>
+  
+  <!-- 更新检测流程 -->
+    
+  <update id="update" parameterType="java.util.Map" >
+    update procedures
+     <set >
+      <if test="batchnum !=''">batchnum = #{batchnum}, </if>
+	<if test="barcode !=''">barcode = #{barcode}, </if>
+	<if test="statioin9w !=''">statioin9w = #{statioin9w}, </if>
+	<if test="station1mtime !=''">station1mtime = #{station1mtime}, </if>
+	<if test="station1m !=''">station1m = #{station1m}, </if>
+	<if test="station0stime !=''">station0stime = #{station0stime}, </if>
+	<if test="station0s !=''">station0s = #{station0s}, </if>
+	<if test="station2dtime !=''">station2dtime = #{station2dtime}, </if>
+	<if test="station2d !=''">station2d = #{station2d}, </if>
+	<if test="station9wtime !=''">station9wtime = #{station9wtime}, </if>
+	<if test="station !=''">station = #{station}, </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <delete id="delete" parameterType="java.lang.String" >
+    delete from procedures
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <!-- 逻辑删除检测流程 -->
+  
+  <update id="logicDelete" parameterType="java.util.Map" >
+    update procedures
+    set DELETE_FLAG = -1
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

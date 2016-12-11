@@ -47,6 +47,7 @@
 		<mapper resource="mappings/Station2dMapper.xml" />
 		<mapper resource="mappings/Station9wMapper.xml" />
 		<mapper resource="mappings/SYSUserMapper.xml" />
+		<mapper resource="mappings/ProcedureMapper.xml" />
 	</mappers>
 
 </configuration>

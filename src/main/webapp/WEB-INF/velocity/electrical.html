@@ -23,56 +23,63 @@
 				</div>
 				<div class="col-xs-5 box-md" style="margin-top:10px;" >
 					测试工位号：
-					<select name="msgType" id="queryMsgType" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
+					<select id="stationnum" name="stationnum" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
                 		<option value="" selected>---请选择---</option>       
+                        <option value="1">1最新5次</option>
                         <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value="1">1</option>
+                        <option value="1">1</option>
+                        <option value="1">1</option>
                     </select>
 				</div>
 				<div class="col-xs-5 box-md" style="margin-top:10px;">
 					阀门条码：
-					<select name="msgType" id="queryMsgType" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
+					<select  id="barcode" name="barcode" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
                 		<option value="" selected>---请选择---</option>       
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value="123456">123456最新5次</option>
+                        <option value="123456">123457</option>
+                        <option value="123456">123458</option>
+                        <option value="123456">123459</option>
+                        <option value="123456">123460</option>
                     </select>
 				</div>
 				<div class="col-xs-5 box-md" style="margin-top:10px;">
 					电机阀型号：
-					<select name="msgType" id="queryMsgType" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
+					<select id="machinetype" name="machinetype" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
                 		<option value="" selected>---请选择---</option>       
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value="Y25">Y25最新5次</option>
+                        <option value="Y25">Y25</option>
+                        <option value="Y25">Y25</option>
+                        <option value="Y25">Y25</option>
+                        <option value="Y25">Y25</option>
                     </select>
 				</div>
 				<div class="col-xs-5 box-md" style="margin-top:10px;">
-					电机阀型号：
-					<select name="msgType" id="queryMsgType" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
+					电机阀编号：
+					<select id="machinenum" name="machinenum" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
                 		<option value="" selected>---请选择---</option>       
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value="1609130001">1609130001最新5次</option>
+                        <option value="1609130001">1609130001</option>
+                        <option value="1609130001">1609130001</option>
+                        <option value="1609130001">1609130001</option>
+                        <option value="1609130001">1609130001</option>
                     </select>
 				</div>
 				<div class="col-xs-5 box-md" style="margin-top:10px;" >
 					测试结果：
-					<select name="msgType" id="queryMsgType" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
+					<select id="result" name="result" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
                 		<option value="" selected>---请选择---</option>       
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                        <option value="合格">合格</option>
+                        <option value="不合格">不合格</option>
                     </select>
 				</div>
 				<div class="col-xs-5 box-md" style="margin-top:10px;">
 					检验员：
-					<select name="msgType" id="queryMsgType" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
+					<select name="station" id="station" name="" class="large" style="width:200px;" onchange="javascript:getSelect(this.value);">
                 		<option value="" selected>---请选择---</option>       
-                       <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+                       <option value="4001">4001</option>
+                        <option value="4002">4002</option>
+                        <option value="4003">4003</option>
                     </select>
 				</div>
 				<div class="col-xs-2 box-bt" style="margin-top:10px;">
@@ -115,50 +122,40 @@
 <script id="station2d-list-template" type="text/x-handlebars-template">
 	<tbody>
 		<tr>
-			<th>序号</th>
-			<th>测试次数</th>
-			<th>关阀时间</th>
-			<th>关阀电压</th>
-			<th>开阀时间</th>
-			<th>开阀电压</th>
-			<th>电机阀编号</th>
-			<th>测试电压</th>
-			<th>出厂编号</th>
-			<th>电机阀型号</th>
-			<th>线别</th>
-			<th>车间号</th>
-			<th style="display:none">id</th>
-			<th>检测时间</th>
-			<th>批次号</th>
-			<th>工位序号</th>
-			<th>端口号</th>
-			<th>工位号</th>
-			<th>检测结果</th>
 			<th>阀门条码</th>
+<th>检查日期</th>
+<th>出厂编号</th>
+			<th>电机阀型号</th>
+<th>电机阀编号</th>
+<th>测试电压</th>
+<th>开阀时间</th>
+			<th>开阀电压</th>
+<th>关阀时间</th>
+			<th>关阀电压</th>
+<th>测试次数</th>
+<th>工位序号</th>
+<th>检测结果</th>
+<th>检测时间</th>
+<th>检验员</th>
 			
 		</tr>
 	  {{#each this}}
 		<tr>
-        	<td>{{ORACLESTART}}</td>
-			<td>{{testtimes}}</td>
-			<td>{{endtime}}</td>
-			<td>{{enda}}</td>
-			<td>{{starttime}}</td>
-			<td>{{starta}}</td>
-			<td>{{machinenum}}</td>
-			<td>{{testa}}</td>
-			<td>{{factorynumber}}</td>
-			<td>{{machinetype}}</td>
-			<td>{{linenum}}</td>
-			<td>{{wpnum}}</td>
-			<td style="display:none">{{id}}</td>
-			<td>{{creattime}}</td>
-			<td>{{batchnum}}</td>
-			<td>{{stationnum}}</td>
-			<td>{{port}}</td>
-			<td>{{station}}</td>
-			<td>{{result}}</td>
 			<td>{{barcode}}</td>
+<td>{{creattime}}</td>
+	<td>{{factorynumber}}</td>
+			<td>{{machinetype}}</td>
+<td>{{machinenum}}</td>
+<td>{{testa}}</td>
+	<td>{{starttime}}</td>
+			<td>{{starta}}</td>
+<td>{{endtime}}</td>
+			<td>{{enda}}</td>
+<td>{{testtimes}}</td>
+<td>{{stationnum}}</td>
+<td>{{result}}</td>
+<td>{{creattime}}</td>
+<td>{{station}}</td>
 			
     	</tr> 
 	  {{/each}}
