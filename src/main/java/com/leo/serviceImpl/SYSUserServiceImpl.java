@@ -58,17 +58,17 @@ public class SYSUserServiceImpl extends BaseServiceImpl implements ISYSUserServi
 	@Override
 	public int updateSYSUser(InputObject inputObject,
 			OutputObject outputObject) throws Exception {
-		String updateTime = DateUtil.date2String(new Date(),DateUtil.DATE_PATTERN.YYYY_MM_DD_HH_MM_SS);
-		//查询系统用户是否存在 有code验证时放开
-		//Object object = getBaseDao().queryForObject("SYSUserMapper.getByCode", inputObject.getParams());
-		//if(object==null){
-			inputObject.getParams().put("updateTime", updateTime);
-			return getBaseDao().update("SYSUserMapper.update", inputObject.getParams());
-		//}else{
-		//	outputObject.setReturnCode("-1");
-		//	outputObject.setReturnMessage("系统用户已经存在，请修改!");
-		//	return -1;
-		//}
+		int count = 0;
+			try {
+				count = getBaseDao().update("SYSUserMapper.update", inputObject.getParams());
+				outputObject.setReturnCode("1");
+				outputObject.setReturnMessage("修改成功");
+			} catch (Exception e) {
+				outputObject.setReturnCode("0");
+				outputObject.setReturnMessage("修改密码失败");
+				e.printStackTrace();
+			}
+			return count;
 
 	}
 	@Override

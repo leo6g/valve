@@ -1,11 +1,13 @@
 package com.leo.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,36 +24,50 @@ public class LoginController extends BaseController {
 	
 	@RequestMapping(value="station0s")
 	public ModelAndView station0s(ModelAndView mv){
+		mv.addObject("userName", getSession().getAttribute("userName"));
+		mv.addObject("station", getSession().getAttribute("station"));
 		mv.setViewName("station0s");
 		return mv;
 	}
 	@RequestMapping(value="station1m")
 	public ModelAndView station1m(ModelAndView mv){
+		mv.addObject("userName", getSession().getAttribute("userName"));
+		mv.addObject("station", getSession().getAttribute("station"));
 		mv.setViewName("station1m");
 		return mv;
 	}
 	@RequestMapping(value="station2d")
 	public ModelAndView station2d(ModelAndView mv){
+		mv.addObject("userName", getSession().getAttribute("userName"));
+		mv.addObject("station", getSession().getAttribute("station"));
 		mv.setViewName("station2d");
 		return mv;
 	}
 	@RequestMapping(value="station9w")
 	public ModelAndView station9w(ModelAndView mv){
+		mv.addObject("userName", getSession().getAttribute("userName"));
+		mv.addObject("station", getSession().getAttribute("station"));
 		mv.setViewName("station9w");
 		return mv;
 	}
 	@RequestMapping(value="sealingTest")
 	public ModelAndView sealingTest(ModelAndView mv){
+		mv.addObject("userName", getSession().getAttribute("userName"));
+		mv.addObject("station", getSession().getAttribute("station"));
 		mv.setViewName("sealingTest");
 		return mv;
 	}
 	@RequestMapping(value="testingProcedures")
 	public ModelAndView testingProcedures(ModelAndView mv){
+		mv.addObject("userName", getSession().getAttribute("userName"));
+		mv.addObject("station", getSession().getAttribute("station"));
 		mv.setViewName("testingProcedures");
 		return mv;
 	}
 	@RequestMapping(value="electrical")
 	public ModelAndView electrical(ModelAndView mv){
+		mv.addObject("userName", getSession().getAttribute("userName"));
+		mv.addObject("station", getSession().getAttribute("station"));
 		mv.setViewName("electrical");
 		return mv;
 	}
@@ -89,6 +105,31 @@ public class LoginController extends BaseController {
 			out.setReturnCode("1");
 			getSession().setAttribute("userName", out.getBean().get("name"));
 			getSession().setAttribute("station", out.getBean().get("station"));
+			getSession().setAttribute("password", out.getBean().get("password"));
+		}
+		return out;
+	}
+	@ResponseBody
+	@RequestMapping(value="login/changePass")
+	public OutputObject changePass(HttpServletRequest request,HttpServletResponse response){
+		OutputObject out = new OutputObject();
+		InputObject in = new InputObject();
+		Map<String,String> param =new HashMap<String,String>();
+		String oldPass = request.getParameter("oldPass");
+		String newPass = request.getParameter("newPass");
+		if(!getSession().getAttribute("password").equals(oldPass)){
+			out.setReturnCode("0");
+			out.setReturnMessage("原密码错误");
+			return out;
+		}
+		param.put("password", newPass);
+		param.put("station", (String)getSession().getAttribute("station"));
+		in.setService("SYSUserServiceImpl");
+		in.setMethod("updateSYSUser");
+		in.setParams(param);
+		out = getOutputObject(in);
+		if("1".equals(out.getReturnCode())){
+			getSession().setAttribute("password",newPass);
 		}
 		return out;
 	}
