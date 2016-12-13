@@ -1,4 +1,4 @@
-package com.leo.serviceImpl;
+package com.leo.service;
 
 import com.ai.frame.bean.InputObject;
 import com.ai.frame.bean.OutputObject;

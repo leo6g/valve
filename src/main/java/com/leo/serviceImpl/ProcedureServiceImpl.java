@@ -9,9 +9,9 @@ import org.slf4j.LoggerFactory;
 
 import com.ai.frame.bean.InputObject;
 import com.ai.frame.bean.OutputObject;
+import com.leo.service.IProcedureService;
 import com.leo.serviceImpl.BaseServiceImpl;
 import com.leo.util.DateUtil;
-import com.leo.serviceImpl.IProcedureService ;
 
 public class ProcedureServiceImpl extends BaseServiceImpl implements IProcedureService   {
 	private Logger logger = LoggerFactory.getLogger("BaseContoller");
@@ -21,7 +21,7 @@ public class ProcedureServiceImpl extends BaseServiceImpl implements IProcedureS
 		List<Map<String, String>> list= getBaseDao().queryForList("ProcedureMapper.getList", inputObject.getParams());
 		outputObject.setBeans(list);
 		int totalcount = getBaseDao().getTotalCount("ProcedureMapper.countAll", inputObject.getParams());
-		outputObject.setObject(totalcount);
+		outputObject.getBean().put("count", String.valueOf(totalcount));
 		 logger.info("getList success");
 	}
 	@Override

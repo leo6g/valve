@@ -5,6 +5,11 @@ var global_limit = 10 ;
 	//初始化检测流程列表信息
 	initProcedureListInfo();
 	
+	//查询按钮
+	$("#querySubmit").click(function(){
+		initProcedureListInfo();
+	});
+	
 	//初始化检测流程列表信息
 	function initProcedureListInfo(currentPage, limit){
 		if(typeof currentPage == "undefined"){
@@ -14,7 +19,8 @@ var global_limit = 10 ;
 			limit = global_limit;
 		}
 		var url = contextPath + "/getList";
-		var params = "pageNumber="+currentPage+"&limit="+limit;
+		var params = $("#queryForm").serialize();
+		params = params + "&pageNumber="+currentPage+"&limit="+limit;
 		//异步请求检测流程列表数据
 		Util.ajax.postJson(url, params, function(data, flag){
 			var source = $("#procedure-list-template").html();

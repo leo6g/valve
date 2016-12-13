@@ -94,13 +94,13 @@
   <!-- 分页查询密封性检测工位 -->
   
   <select id="getList" resultMap="BaseResultMap" >
-  	
 	    select 
 	    <include refid="Base_Column_List" />
 	    from STATION1M
 	<if test="_parameter !=''" >
      	<include refid="Example_Where_Clause" />
    	</if>
+   	limit ${start},${limit}
   </select>
   
   <!-- 根据Id查询密封性检测工位 -->
@@ -114,9 +114,12 @@
   
   <!-- 查询密封性检测工位总数量 -->
   
-  <select id="countAll" resultType="java.lang.Integer" >
+  <select id="countAll" resultType="java.lang.Integer" parameterType="java.lang.String" >
 	    select count(1)
 	    from STATION1M
+	    <if test="_parameter !=''" >
+     		<include refid="Example_Where_Clause" />
+   		</if>
 	    <!-- 有DELETE_FLAG放开-->
 	   <!-- where DELETE_FLAG = 0 -->
   </select>

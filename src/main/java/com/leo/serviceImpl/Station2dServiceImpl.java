@@ -21,7 +21,7 @@ public class Station2dServiceImpl extends BaseServiceImpl implements IStation2dS
 		List<Map<String, String>> list= getBaseDao().queryForList("Station2dMapper.getList", inputObject.getParams());
 		outputObject.setBeans(list);
 		int totalcount = getBaseDao().getTotalCount("Station2dMapper.countAll", inputObject.getParams());
-		outputObject.setObject(totalcount);
+		outputObject.getBean().put("count", String.valueOf(totalcount));
 		 logger.info("getList success");
 	}
 	@Override

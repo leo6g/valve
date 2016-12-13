@@ -4,6 +4,10 @@ $(document).ready(function(){
 var global_limit = 10 ;
 	//初始化密封性检测工位列表信息
 	initStation1mListInfo();
+	//查询按钮
+	$("#querySubmit").click(function(){
+		initStation1mListInfo();
+	});
 	//初始化密封性检测工位列表信息
 	function initStation1mListInfo(currentPage, limit){
 		if(typeof currentPage == "undefined"){
@@ -13,7 +17,8 @@ var global_limit = 10 ;
 			limit = global_limit;
 		}
 		var url = contextPath + "/station1m/getList";
-		var params = "pageNumber="+currentPage+"&limit="+limit;
+		var params = $("#queryForm").serialize();
+		params = params + "&pageNumber="+currentPage+"&limit="+limit;
 		//异步请求密封性检测工位列表数据
 		Util.ajax.postJson(url, params, function(data, flag){
 			var source = $("#station1m-list-template").html();

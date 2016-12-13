@@ -65,7 +65,9 @@ public class Station1mController extends BaseController{
 			returnValidatorAjaxResult(result);
 		}
 		OutputObject outputObject = null;
+		
 		Map<String,String> map = BeanUtil.convertBean2Map(station1mForm);
+		map.put("start", String.valueOf(((station1mForm.getPageNumber()-1)*station1mForm.getLimit())));
 		outputObject = getOutputObject(map, "station1mService", "getList");
 		outputObject.setReturnCode("1");
 		return outputObject;

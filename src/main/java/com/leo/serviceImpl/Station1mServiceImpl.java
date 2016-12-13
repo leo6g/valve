@@ -21,7 +21,7 @@ public class Station1mServiceImpl extends BaseServiceImpl implements IStation1mS
 		List<Map<String, String>> list= getBaseDao().queryForList("Station1mMapper.getList", inputObject.getParams());
 		outputObject.setBeans(list);
 		int totalcount = getBaseDao().getTotalCount("Station1mMapper.countAll", inputObject.getParams());
-		outputObject.setObject(totalcount);
+		outputObject.getBean().put("count", String.valueOf(totalcount));
 		 logger.info("getList success");
 	}
 	@Override

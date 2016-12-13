@@ -101,7 +101,7 @@
 	<if test="_parameter !=''" >
      	<include refid="Example_Where_Clause" />
    	</if>
-    
+    limit ${start},${limit}
   </select>
   
   <!-- 根据Id查询电性能检测工位 -->
@@ -115,9 +115,13 @@
   
   <!-- 查询电性能检测工位总数量 -->
   
-  <select id="countAll" resultType="java.lang.Integer" >
+  
+  <select id="countAll" resultType="java.lang.Integer" parameterType="java.lang.String" >
 	    select count(1)
 	    from STATION2D
+	    <if test="_parameter !=''" >
+     		<include refid="Example_Where_Clause" />
+   		</if>
 	    <!-- 有DELETE_FLAG放开-->
 	   <!-- where DELETE_FLAG = 0 -->
   </select>

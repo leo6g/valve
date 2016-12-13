@@ -66,6 +66,7 @@ public class Station2dController extends BaseController{
 		}
 		OutputObject outputObject = null;
 		Map<String,String> map = BeanUtil.convertBean2Map(station2dForm);
+		map.put("start", String.valueOf(((station2dForm.getPageNumber()-1)*station2dForm.getLimit())));
 		outputObject = getOutputObject(map, "station2dService", "getList");
 		outputObject.setReturnCode("1");
 		return outputObject;

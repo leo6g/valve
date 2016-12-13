@@ -66,6 +66,7 @@ public class ProcedureController extends BaseController{
 		}
 		OutputObject outputObject = null;
 		Map<String,String> map = BeanUtil.convertBean2Map(procedureForm);
+		map.put("start", String.valueOf(((procedureForm.getPageNumber()-1)*procedureForm.getLimit())));
 		outputObject = getOutputObject(map, "procedureService", "getList");
 		outputObject.setReturnCode("1");
 		return outputObject;
