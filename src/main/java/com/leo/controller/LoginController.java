@@ -26,28 +26,28 @@ public class LoginController extends BaseController {
 	public ModelAndView station0s(ModelAndView mv){
 		mv.addObject("userName", getSession().getAttribute("userName"));
 		mv.addObject("station", getSession().getAttribute("station"));
-		mv.setViewName("station0s");
+		mv.setViewName("0station");
 		return mv;
 	}
 	@RequestMapping(value="station1m")
 	public ModelAndView station1m(ModelAndView mv){
 		mv.addObject("userName", getSession().getAttribute("userName"));
 		mv.addObject("station", getSession().getAttribute("station"));
-		mv.setViewName("station1m");
+		mv.setViewName("1station");
 		return mv;
 	}
 	@RequestMapping(value="station2d")
 	public ModelAndView station2d(ModelAndView mv){
 		mv.addObject("userName", getSession().getAttribute("userName"));
 		mv.addObject("station", getSession().getAttribute("station"));
-		mv.setViewName("station2d");
+		mv.setViewName("2station");
 		return mv;
 	}
 	@RequestMapping(value="station9w")
 	public ModelAndView station9w(ModelAndView mv){
 		mv.addObject("userName", getSession().getAttribute("userName"));
 		mv.addObject("station", getSession().getAttribute("station"));
-		mv.setViewName("station9w");
+		mv.setViewName("9station");
 		return mv;
 	}
 	@RequestMapping(value="sealingTest")
