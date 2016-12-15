@@ -1,3 +1,4 @@
+<%@page import="com.fasterxml.jackson.annotation.JsonInclude.Include"%>
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -9,6 +10,7 @@
 	var conpath = "<%=request.getContextPath()%>";
 </script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/assets/js/jump2.js"></script>
+<jsp:include page="common.jsp" />
   <SCRIPT LANGUAGE="JavaScript" >
 	var flag=true;
     function f_test(){
@@ -132,9 +134,11 @@
 	</div>
 
 	<div class="div2">
-
-		<img id="u8_img"  width="150" class="img " src="<%=request.getContextPath()%>/assets/jsp/images/0首工位/u8.png" />
-
+		<img id="u8_img"  width="150" class="img " src="<%=request.getContextPath()%>/assets/jsp/images/0首工位/u8.png"/>
+			<div style="position:absolute;z-index: 21;left: 36px;top: 89px;font-size:12pt;color: #29abe2;font-weight:bold;"><%=session.getAttribute("station") %></div>
+				<div style="position:absolute;z-index: 21;left: 86px;top: 90px;font-size:12pt;color: #29abe2;font-weight:bold;"><%=session.getAttribute("userName") %></div>
+				<div style="position:absolute;z-index: 21;left: 19px;top: 111px;font-size:10pt;color: #29abe2;font-weight:bold;">操作员&nbsp;&nbsp;&nbsp;|</div>
+				<div style="position:absolute;z-index: 21;left: 84px;top: 112px;font-size:10pt;color: #29abe2;font-weight:bold; cursor:hand"data-toggle="modal" data-target="#myModal">修改密码</div>
 		<div class="ins1">工位号</div>
 		<ul>
 			<ins id="station0s" style="width: 90px;"><a href="#">0首工位</ins>
@@ -298,7 +302,83 @@
 			</div>
      </div>
 	</div>
-	
+	<div class="modal fade" id="myModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <form id="addStation0sForm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+            </div>
+            <div class="modal-body">
+                <div class="info-item-content">
+                    <table class="wide-table table">
+                        <tr>
+							<td style="border: none;">
+								原密码：
+								<div class="input-wrap">
+									<input type="password" id="oldPass" name="oldPass" value="" class="fluid-input" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td style="border: none;">
+								新密码：
+								<div class="input-wrap">
+									<input type="password" id="newPass" name="newPass" value="" class="fluid-input" />
+								</div>
+							</td>
+						</tr>
+						 <tr>
+							<td style="border: none;">
+								确认密码：
+								<div class="input-wrap">
+									<input type="password" id="confirmPass" name="confirmPass" value="" class="fluid-input" />
+								</div>
+							</td>
+						</tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span type="button" class="btn" id="savePass">确认</span>
+                <span type="button" class="btn"  data-dismiss="modal">取消</span>
+            </div>
+        </div>
+    </div>
+  </form>
+</div>
+<script type="text/javascript">
+	$("#savePass").click(function(){
+		if($("#oldPass").val()==""){
+			alert("请输入原密码");
+			return;
+		}
+		if($("#newPass").val()==""){
+			alert("请输入新密码");
+			return;
+				}
+		if($("#confirmPass").val()==""){
+			alert("请确认密码");
+			return;
+		}
+		if($("#newPass").val()!=$("#confirmPass").val()){
+			alert("两次输入不一致 请检查");
+			return;
+		}
+		var url = "<%=request.getContextPath()%>/login/changePass";
+		var params = $("#addStation0sForm").serialize();
+		Util.ajax.postJson(url, params, function(data,flag){
+				if(data.returnCode=="1"){
+					alert(data.returnMessage);
+					$("#myModal").modal('hide');
+				}else{
+					alert(data.returnMessage);
+				}
+		});
+		
+	})
+</script>
 	
 </body>
 </html>

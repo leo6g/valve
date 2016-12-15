@@ -76,6 +76,8 @@ public class LoginController extends BaseController {
 	@RequestMapping(value="login")
 	public ModelAndView login(ModelAndView mv,HttpServletRequest request){
 		String userName = (String)getSession().getAttribute("userName");
+		mv.addObject("userName", getSession().getAttribute("userName"));
+		mv.addObject("station", getSession().getAttribute("station"));
 		if(StringUtil.isNotEmpty(userName)){
 			mv.setViewName("station0s");
 		}else{

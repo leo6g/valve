@@ -89,10 +89,10 @@ td {
 
 .div2 {
 	margin-top:-450px;
-	width: 120px;
+	width: 140px;
 	height: 720px;
 	float: left;
-	padding-left: 20px;
+	padding-left: 0px;
 	background-image: url("0首工位/u4.png");
 }
 .data {
